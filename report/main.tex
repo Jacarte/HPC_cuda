@@ -251,8 +251,9 @@ int main() {
   return 0;
 }
     \end{lstlisting}
-    
-TODO Explain how the program is compiled and the environment that you used. Explain what are CUDA threads and thread blocks, and how they are related to GPU execution.
+  
+  To compile a program we use the \texttt{nvcc} compiler fropm the \href{https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html}{nvidia cuda toolkit}. This tool is wrapper for the instrincate details of CUDA supporting the majority of standard C/C++ compiler options. A CUDA program works mostly under the architecture of thread blocks and threads. A thread block represents a group of threads. For better process and data mapping, threads are grouped into thread blocks. The threads in the same thread block run on the same stream processor at once. Multiple blocks are combined to form a grid. All the blocks in the same grid contain the same number of threads. 
+  
 
 
 
