@@ -2,9 +2,13 @@
 #include <stdlib.h>
 #include <sys/time.h>
 
-#define N 1 << 30 + 1 // 1 << 20
+#ifndef N
+#define N 1000000 // 1 << 20
+#endif
 #define ERROR 0.001
-
+#ifndef THREADS
+    #define THREADS 256
+#endif
 // The same code from lecture1 :)
 double mysecond(){  
 	struct timeval tp;  
@@ -31,8 +35,9 @@ __global__ void gpu_vector_add(float * __restrict__ x, float * __restrict__  y, 
 
 int main(){
     float *a, *b, *cudaOut; 
-    double t1, t2;  
+    double t1, t2, t3, t4;  
 
+    printf("Computing SAXPY with %d elements\n", N);
 
     // Allocate memory
     a   = (float*)malloc(sizeof(float) * N);
@@ -58,17 +63,18 @@ int main(){
 
 
     // Have a fixed number of threads
-    int threads = 256;
+    int threads = THREADS;
     // Always an extra group in case of non multiple of threads N
     int groups = N/threads + 1; 
  
+    t3 = mysecond();  
     gpu_vector_add<<<groups, threads>>>(aCuda, bCuda, N, 1.0); 
-    
+    t4 = mysecond(); 
 
     // Coying back
     cudaMemcpy(cudaOut, bCuda, sizeof(float)*N, cudaMemcpyDeviceToHost);
     t2 = mysecond();  
-    printf("Computing SAXPY on the GPU in %f s (taking  into account memcpy)... Done!\n", (t2 - t1));
+    printf("Computing SAXPY on the GPU in %f s (taking  into account memcpy), %f s (operational)... Done!\n", (t2 - t1), (t4 -t3));
 
     // Freeing cuda resources
 
