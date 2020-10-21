@@ -252,6 +252,9 @@ int main() {
 }
     \end{lstlisting}
     
+TODO Explain how the program is compiled and the environment that you used. Explain what are CUDA threads and thread blocks, and how they are related to GPU execution.
+
+
 
 \section{Exercise 4 - SAXPY}
 
@@ -268,13 +271,11 @@ int main() {
 
 int main() {
 ..
-// Have a fixed number of threads
-int threads = THREADS;
 // Always an extra group in case of non multiple of threads N
-int groups = N/threads + 1; 
+int groups = N/THREADS + 1; 
 ...
 
-gpu_vector_add<<<groups, threads>>>(aCuda, bCuda, N, A); 
+gpu_vector_add<<<groups, THREADS>>>(aCuda, bCuda, N, A); 
 
 ...
 }
