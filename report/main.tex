@@ -188,7 +188,7 @@ The output of \texttt{bandwidthTest} on Tegner is included in \autoref{lst:bandw
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{graph-bandwidthTest.png}
+\includegraphics[width=0.8\textwidth]{bandwidthTest.png}
 \caption{Transfer Size Vs. Bandwidth with \texttt{bandwidthTest --mode=shmoo} on Tegner}
 \label{fig:bandwidthTest}
 \end{figure}
@@ -231,5 +231,27 @@ Results may vary when GPU Boost is enabled.
 \end{itemize}
 
 \section{Exercise 3 - Hello World!}
+
+\begin{lstlisting}[style=CStyle]
+#include <stdio.h>
+#include <cuda.h>
+
+__global__ void cuda_hello(){
+    int myId = blockIdx.x*blockDim.x +  threadIdx.x; // thread indexing
+    printf("Hello World! My thread is %d\n", myId);
+}
+
+int main() {
+  cuda_hello<<<1,256>>>();
+
+  cudaError_t cudaerr = cudaDeviceSynchronize();
+  if (cudaerr != cudaSuccess)
+    printf("kernel launch failed with error \"%s\".\n",cudaGetErrorString(cudaerr));
+
+  return 0;
+}
+    \end{lstlisting}
+    
+
 \end{document}
 
