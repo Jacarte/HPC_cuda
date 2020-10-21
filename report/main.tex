@@ -253,5 +253,20 @@ int main() {
     \end{lstlisting}
     
 
+\section{Exercise 4 - SAXPY}
+
+
+\begin{lstlisting}[style=CStyle]
+  __global__ void gpu_vector_add(float * __restrict__ x, float * __restrict__  y, int n, float A){
+    
+   int index = blockIdx.x*blockDim.x + threadIdx.x;
+   if (index < n) y[index] = A*x[index] + y[index];
+        
+} 
+\end{lstlisting}
+
+Each thread calculates its own index.
+      
+
 \end{document}
 
