@@ -263,15 +263,33 @@ int main() {
    if (index < n) y[index] = A*x[index] + y[index];
         
 } 
+
+...
+
+int main() {
+..
+// Have a fixed number of threads
+int threads = THREADS;
+// Always an extra group in case of non multiple of threads N
+int groups = N/threads + 1; 
+...
+
+gpu_vector_add<<<groups, threads>>>(aCuda, bCuda, N, A); 
+
+...
+}
+
 \end{lstlisting}
 
-Each thread calculates its own index.
+% Explain how you solved the issue when the ARRAY_SIZE is not a multiple of the block size. If you implemented timing in the code, vary ARRAY_SIZE from small to large, and explain how the execution time changes between GPU and CPU.
+
+In our approach, each thread calculates the value for its own index, as it is listed above. To solve the issue where the \texttt{ARRAY\_SIZE} is not a multiple of the block size, we approximate the number of blocks always adding one more block. To avoid the access to outside X and Y  memory spaces we make a boundary check (line 4 in listing above).
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{O0.png}
 \caption{K80:2 configuration using -O0 option in the compiler. X and Y axles are in logarithmic scale.}
-\label{fig:bandwidthTest}
+\label{fig:O0}
 \end{figure}
 
 
@@ -279,9 +297,12 @@ Each thread calculates its own index.
   \centering
   \includegraphics[width=0.8\textwidth]{O1.png}
   \caption{K80:2 configuration using -Ox option in the compiler. X and Y axles are in logarithmic scale.}
-  \label{fig:bandwidthTest}
+  \label{fig:Ox}
   \end{figure}
   
+In \autoref{fig:O0} and \autoref{fig:Ox} we show the execution time for CPU and GPU versions given different \texttt{ARRAY\_SIZE}. Each figure correspond to the application or not of compiler optimizations respectively. The SAXPY procedure are maybe not the best example to illustrate how GPU improves the algorithm. For example, between applying optimizations or not, the GPU version is never better than the CPU time. 
+
+However, to be fair, we are taking into account the mem copy operations in the measurement between lines blue and green. If we take a look at the operation time in GPU it is considerably better than CPU in all cases excepting small values of N. In these cases CPU is better probably due to that calculating SAXPY takes always less than the threads orchestration. 
 
 \end{document}
 

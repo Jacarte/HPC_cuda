@@ -77,7 +77,7 @@ plt.cla()
 
 plt.yscale("log")
 plt.xscale("log")
-plt.title("-O1")
+plt.title("-Ox")
 plt.grid(True)
 plt.xlabel("N")
 plt.ylabel("Execution time(s)")
