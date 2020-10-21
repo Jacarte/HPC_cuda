@@ -35,7 +35,7 @@ __global__ void gpu_vector_add(float * __restrict__ x, float * __restrict__  y, 
 
 int main(){
     float *a, *b, *cudaOut; 
-    double t1, t2, t3, t4;  
+    double t1, t2, t3, t4, t5, t6;  
 
     printf("Computing SAXPY with %d elements\n", N);
 
@@ -74,18 +74,20 @@ int main(){
     // Coying back
     cudaMemcpy(cudaOut, bCuda, sizeof(float)*N, cudaMemcpyDeviceToHost);
     t2 = mysecond();  
-    printf("Computing SAXPY on the GPU in %f s (taking  into account memcpy), %f s (operational)... Done!\n", (t2 - t1), (t4 -t3));
+    printf("Computing SAXPY on the GPU in %fs (taking  into account memcpy), %fs (operational)... Done!\n", (t2 - t1), (t4 -t3));
 
     // Freeing cuda resources
 
     cudaFree(aCuda);
     cudaFree(bCuda);    
 
-    t1 = mysecond();  
+    t5 = mysecond();  
     cpu_vector_add(a, b, N, 1.0);
-    t2 = mysecond();  
-    printf("Computing SAXPY on the CPU in %f s… Done!\n", (t2 - t1));
+    t6 = mysecond();  
+    printf("Computing SAXPY on the CPU in %fs… Done!\n", (t6 - t5));
    
+    printf("Times: %f,%f,%f\n", (t2 -t1), (t4 - t3), (t6 - t5));
+
     for(int i = 0; i < N; i++){
         if(abs(b[i] - cudaOut[i]) > ERROR)
         {

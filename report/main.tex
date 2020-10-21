@@ -268,5 +268,65 @@ int main() {
 Each thread calculates its own index.
       
 
+
+%omputing SAXPY with 10 elements
+%omputing SAXPY on the GPU in 0.001375 s (taking  into account memcpy)... Done!
+%omputing SAXPY on the CPU in 0.000000 s… Done!
+%ash-4.2$ nvcc saxpy.cu -O0 -DTHREADS=1024 -DN=100 -o saxpy.out
+%axpy.cu(16): warning: variable "i" was set but never used
+%
+%ash-4.2$ srun -n 1 saxpy.out 
+%omputing SAXPY with 100 elements
+%omputing SAXPY on the GPU in 0.002237 s (taking  into account memcpy)... Done!
+%omputing SAXPY on the CPU in 0.000000 s… Done!
+%ash-4.2$ nvcc saxpy.cu -O0 -DTHREADS=1024 -DN=1000 -o saxpy.out
+%axpy.cu(16): warning: variable "i" was set but never used
+%
+%ash-4.2$ srun -n 1 saxpy.out 
+%omputing SAXPY with 1000 elements
+%omputing SAXPY on the GPU in 0.001371 s (taking  into account memcpy)... Done!
+%omputing SAXPY on the CPU in 0.000004 s… Done!
+%ash-4.2$ nvcc saxpy.cu -O0 -DTHREADS=1024 -DN=10000 -o saxpy.out
+%axpy.cu(16): warning: variable "i" was set but never used
+%
+%ash-4.2$ srun -n 1 saxpy.out .out
+%omputing SAXPY with 10000 elements
+%omputing SAXPY on the GPU in 0.001609 s (taking  into account memcpy)... Done!
+%omputing SAXPY on the CPU in 0.000033 s… Done!
+%ash-4.2$ nvcc saxpy.cu -O0 -DTHREADS=1024 -DN=100000 -o saxpy.out
+%axpy.cu(16): warning: variable "i" was set but never used
+%
+%ash-4.2$ srun -n 1 saxpy.out 
+%omputing SAXPY with 100000 elements
+%omputing SAXPY on the GPU in 0.002066 s (taking  into account memcpy)... Done!
+%omputing SAXPY on the CPU in 0.000336 s… Done!
+%ash-4.2$ nvcc saxpy.cu -O0 -DTHREADS=1024 -DN=1000000 -o saxpy.out
+%axpy.cu(16): warning: variable "i" was set but never used
+%
+%ash-4.2$ srun -n 1 saxpy.out 
+%omputing SAXPY with 1000000 elements
+%omputing SAXPY on the GPU in 0.003560 s (taking  into account memcpy)... Done!
+%omputing SAXPY on the CPU in 0.003286 s… Done!
+%ash-4.2$ nvcc saxpy.cu -O0 -DTHREADS=1024 -DN=10000000 -o saxpy.out
+%axpy.cu(16): warning: variable "i" was set but never used
+%
+%ash-4.2$ srun -n 1 saxpy.out 
+%omputing SAXPY with 10000000 elements
+%omputing SAXPY on the GPU in 0.019681 s (taking  into account memcpy)... Done!
+%omputing SAXPY on the CPU in 0.032742 s… Done!
+%ash-4.2$ nvcc saxpy.cu -O0 -DTHREADS=1024 -DN=100000000 -o saxpy.out
+%axpy.cu(16): warning: variable "i" was set but never used
+%
+%ash-4.2$ srun -n 1 saxpy.out 
+%omputing SAXPY with 100000000 elements
+%omputing SAXPY on the GPU in 0.173970 s (taking  into account memcpy)... Done!
+%omputing SAXPY on the CPU in 0.262232 s… Done!
+%ash-4.2$ nvcc saxpy.cu -O0 -DTHREADS=1024 -DN=1000000000 -o saxpy.out
+%axpy.cu(16): warning: variable "i" was set but never used
+%Computing SAXPY with 1000000000 elements
+%Computing SAXPY on the GPU in 1.359266 s (taking  into account memcpy)... Done!
+%Computing SAXPY on the CPU in 2.440738 s… Done!
+
+
 \end{document}
 

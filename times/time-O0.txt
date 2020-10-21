@@ -1,0 +1,57 @@
+1
+Computing SAXPY with 10 elements
+Computing SAXPY on the GPU in 0.001917s (taking  into account memcpy), 0.001266s (operational)... Done!
+Computing SAXPY on the CPU in 0.000000s… Done!
+Times: 0.001917,0.001266,0.000000
+Computing SAXPY with 100 elements
+Computing SAXPY on the GPU in 0.001834s (taking  into account memcpy), 0.001282s (operational)... Done!
+Computing SAXPY on the CPU in 0.000001s… Done!
+Times: 0.001834,0.001282,0.000001
+Computing SAXPY with 1000 elements
+Computing SAXPY on the GPU in 0.002004s (taking  into account memcpy), 0.001335s (operational)... Done!
+Computing SAXPY on the CPU in 0.000004s… Done!
+Times: 0.002004,0.001335,0.000004
+Computing SAXPY with 10000 elements
+Computing SAXPY on the GPU in 0.002109s (taking  into account memcpy), 0.001317s (operational)... Done!
+Computing SAXPY on the CPU in 0.000061s… Done!
+Times: 0.002109,0.001317,0.000061
+Computing SAXPY with 100000 elements
+Computing SAXPY on the GPU in 0.001928s (taking  into account memcpy), 0.001129s (operational)... Done!
+Computing SAXPY on the CPU in 0.000353s… Done!
+Times: 0.001928,0.001129,0.000353
+Computing SAXPY with 1000000 elements
+Computing SAXPY on the GPU in 0.005369s (taking  into account memcpy), 0.001316s (operational)... Done!
+Computing SAXPY on the CPU in 0.006718s… Done!
+Times: 0.005369,0.001316,0.006718
+Computing SAXPY with 2000000 elements
+Computing SAXPY on the GPU in 0.006797s (taking  into account memcpy), 0.001213s (operational)... Done!
+Computing SAXPY on the CPU in 0.012481s… Done!
+Times: 0.006797,0.001213,0.012481
+Computing SAXPY with 3000000 elements
+Computing SAXPY on the GPU in 0.008685s (taking  into account memcpy), 0.001300s (operational)... Done!
+Computing SAXPY on the CPU in 0.013057s… Done!
+Times: 0.008685,0.001300,0.013057
+Computing SAXPY with 5000000 elements
+Computing SAXPY on the GPU in 0.011005s (taking  into account memcpy), 0.001437s (operational)... Done!
+Computing SAXPY on the CPU in 0.017496s… Done!
+Times: 0.011005,0.001437,0.017496
+Computing SAXPY with 9000000 elements
+Computing SAXPY on the GPU in 0.017914s (taking  into account memcpy), 0.001337s (operational)... Done!
+Computing SAXPY on the CPU in 0.032267s… Done!
+Times: 0.017914,0.001337,0.032267
+Computing SAXPY with 10000000 elements
+Computing SAXPY on the GPU in 0.019272s (taking  into account memcpy), 0.001260s (operational)... Done!
+Computing SAXPY on the CPU in 0.035214s… Done!
+Times: 0.019272,0.001260,0.035214
+Computing SAXPY with 100000000 elements
+Computing SAXPY on the GPU in 0.189688s (taking  into account memcpy), 0.001331s (operational)... Done!
+Computing SAXPY on the CPU in 0.340214s… Done!
+Times: 0.189688,0.001331,0.340214
+Computing SAXPY with 500000000 elements
+Computing SAXPY on the GPU in 0.750545s (taking  into account memcpy), 0.001277s (operational)... Done!
+Computing SAXPY on the CPU in 1.655931s… Done!
+Times: 0.750545,0.001277,1.655931
+Computing SAXPY with 900000000 elements
+Computing SAXPY on the GPU in 1.265027s (taking  into account memcpy), 0.001002s (operational)... Done!
+Computing SAXPY on the CPU in 2.523074s… Done!
+Times: 1.265027,0.001002,2.523074
