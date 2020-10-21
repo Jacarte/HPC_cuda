@@ -168,14 +168,14 @@ All source code can be found here \url{XX}.
             \item \textit{Programming approach}: Parallel execution of software tests  using general-purpose GPUs; One test case with distinct test inputs executed per GPU thread.
         \end{itemize}
       
-        \item \textbf{Domain: WebAssembly}
+        \item \textbf{Domain: Trace (Time Series) comparison}
         \begin{itemize}
-            \item \textit{Title}:
-            \item \textit{Authors}:
-            \item \textit{Publication}:
-            \item \textit{DOI}:
-            \item \textit{GPU specifications}:
-            \item \textit{Programming approach}:
+            \item \textit{Title}: CUDA-Accelerated Alignment of Subsequences in Streamed Time Series Data
+            \item \textit{Authors}: Christian Hundt, Bertil Schmidt and Elmar Schömer
+            \item \textit{Publication}: 2014 43rd International Conference on Parallel Processing
+            \item \textit{DOI}: \url{https://doi.org/10.1109/ICPP.2014.10}
+            \item \textit{GPU specifications}: NVIDIA GeForce GTX TITAN @836MHz 6GB RAM, CUDA version 5.0 (Compute Capability 3.5)
+            \item \textit{Programming approach}: Transform DTW algorithm to wavefront approach parallelizing the calculation of the dynamic programming problem matrix.
         \end{itemize}
     \end{itemize}
 \end{enumerate}
@@ -300,7 +300,7 @@ In our approach, each thread calculates the value for its own index, as it is li
   \label{fig:Ox}
   \end{figure}
   
-In \autoref{fig:O0} and \autoref{fig:Ox} we show the execution time for CPU and GPU versions given different \texttt{ARRAY\_SIZE}. Each figure correspond to the application or not of compiler optimizations respectively. The SAXPY procedure are maybe not the best example to illustrate how GPU improves the algorithm. For example, between applying optimizations or not, the GPU version is never better than the CPU time. 
+In \autoref{fig:O0} and \autoref{fig:Ox} we show the execution time for CPU and GPU versions given different \texttt{ARRAY\_SIZE}. Each figure correspond to the application or not of compiler optimizations respectively. The SAXPY procedure are maybe not the best example to illustrate how GPU improves the algorithm. The \texttt{$A*x[i] + y[i]$} operation is the simplest and highly subceptible to optimizations, like vectorization. For example, between applying optimizations or not, the GPU version (taking into account the transfering time) is never better than the CPU time. 
 
 However, to be fair, we are taking into account the mem copy operations in the measurement between lines blue and green. If we take a look at the operation time in GPU it is considerably better than CPU in all cases excepting small values of N. In these cases CPU is better probably due to that calculating SAXPY takes always less than the threads orchestration. 
 
